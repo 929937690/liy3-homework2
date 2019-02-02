@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 public class PostController {
   
@@ -21,6 +23,11 @@ public class PostController {
   @GetMapping("/posts")
   public Page<Post> getPosts(Pageable pageable) {
     return postRepository.findAll(pageable);
+  }
+
+  @GetMapping("/posts/anonymous")
+  public Page<Post> getPostsByRy(Pageable pageable) {
+    return postRepository.findAllByAuthor("anonymous", pageable);
   }
   
   @GetMapping("/posts/{id}")

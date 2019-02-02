@@ -3,6 +3,8 @@ package com.cybr406.post;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.Locale;
 
 @Entity
 public class Post {
@@ -16,6 +18,37 @@ public class Post {
   @Lob
   @Type(type = "org.hibernate.type.TextType")
   String content;
+
+  @Enumerated(value = EnumType.STRING)
+  Category category;
+
+  String superstars;
+
+  Date date;
+
+  public Date getDate() {
+    return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
+  }
+
+  public String getSuperstars() {
+    return superstars;
+  }
+
+  public void setSuperstars(String superstars) {
+    this.superstars = superstars;
+  }
+
+  public Category getCategory() {
+    return category;
+  }
+
+  public void setCategory(Category category) {
+    this.category = category;
+  }
 
   public Long getId() {
     return id;
